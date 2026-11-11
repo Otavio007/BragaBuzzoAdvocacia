@@ -2974,3 +2974,69 @@ html {
     visibility: visible;
   }
 }
+
+/* Entrada com fotografia compartilhada em toda a tela. */
+.entrance-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: #fafbf9;
+}
+.entrance-background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: .32;
+}
+.entrance-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #fafbf9b8, #fafbf926 45%, #fafbf9e8);
+  pointer-events: none;
+}
+.entrance-page .entrance-header { border-color: #244f5626; }
+.entrance-page .entrance-main { flex: 1; }
+.entrance-page .choice-card {
+  height: clamp(270px, 38vh, 390px);
+  border: 1px solid #ffffff80;
+  box-shadow: 0 14px 40px #153c4214;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.entrance-page .choice-shade,
+.entrance-page .choice-card:last-child .choice-shade {
+  background: linear-gradient(135deg, #173d46e8, #244f56c9);
+}
+.entrance-page .choice-card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px #153c4229; }
+.entrance-contact {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  margin-top: 28px;
+  padding: 22px 26px;
+  border: 1px solid #ffffffbd;
+  border-radius: 8px;
+  background: #fafbf9e8;
+  color: var(--ink);
+}
+.entrance-contact > div { display: flex; gap: 13px; align-items: flex-start; }
+.entrance-contact svg { flex-shrink: 0; margin-top: 2px; }
+.entrance-contact strong { font-size: 12px; font-weight: 650; }
+.entrance-contact p { margin: 5px 0 0; font-size: 13px; line-height: 1.6; }
+.entrance-page .entrance-footer { color: var(--ink); }
+@media (max-width: 700px) {
+  .entrance-page .choice-grid { grid-template-columns: 1fr; gap: 14px; }
+  .entrance-page .choice-card { height: 260px; }
+  .entrance-contact { grid-template-columns: 1fr; gap: 20px; padding: 20px; margin-top: 20px; }
+  .entrance-page .entrance-footer { padding-bottom: 85px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .entrance-page .choice-card { transition: none; }
+}

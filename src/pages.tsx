@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   ArrowRight,
+  Clock3,
   ArrowUpRight,
   Scale,
   Building2,
@@ -35,7 +36,8 @@ export function Entrance() {
   const { data } = useSite();
   const s = data!.settings;
   return (
-    <>
+    <div className="entrance-page">
+      <img className="entrance-background" src={s.lawImage} alt="" fetchPriority="high" />
       <PageMeta
         title={`${s.brand} | Advocacia e Imobiliária`}
         description={s.entranceText}
@@ -53,7 +55,6 @@ export function Entrance() {
               path: "/advocacia",
               title: s.lawTitle,
               description: s.lawDescription,
-              image: s.lawImage,
               button: s.lawButton,
               Icon: Scale,
               label: "01 / ADVOCACIA",
@@ -62,22 +63,12 @@ export function Entrance() {
               path: "/imobiliaria",
               title: s.estateTitle,
               description: s.estateDescription,
-              image: s.estateImage,
               button: s.estateButton,
               Icon: Building2,
               label: "02 / IMOBILIÁRIA",
             },
-          ].map(({ path, title, description, image, button, Icon, label }) => (
+          ].map(({ path, title, description, button, Icon, label }) => (
             <Link to={path} className="choice-card" key={path}>
-              <img
-                src={image}
-                alt={
-                  path === "/advocacia"
-                    ? "Fachada da Braga e Buzzo"
-                    : "Interior residencial com arquitetura acolhedora"
-                }
-                fetchPriority="high"
-              />
               <div className="choice-shade" />
               <div className="choice-top">
                 <span>{label}</span>
@@ -98,11 +89,9 @@ export function Entrance() {
             </Link>
           ))}
         </div>
-        <div className="entrance-bottom">
-          <span>{s.entranceBottomNote}</span>
-          <span>
-            {s.entranceBottomText} <ArrowRight size={15} />
-          </span>
+        <div className="entrance-contact">
+          <div><MapPin size={19} aria-hidden="true" /><div><strong>Nosso endereço</strong><p>{s.address}</p></div></div>
+          <div><Clock3 size={19} aria-hidden="true" /><div><strong>Horário de funcionamento</strong><p>{s.hours}</p></div></div>
         </div>
       </main>
       <div className="entrance-footer container">
@@ -119,7 +108,7 @@ export function Entrance() {
           )}
         </span>
       </div>
-    </>
+    </div>
   );
 }
 export function Law() {
