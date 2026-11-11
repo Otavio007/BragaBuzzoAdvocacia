@@ -24,6 +24,7 @@ import {
   Brand,
   Contact,
   Footer,
+  DeveloperCredit,
   Header,
   NotFound,
   PageMeta,
@@ -107,6 +108,7 @@ export function Entrance() {
             </>
           )}
         </span>
+        <DeveloperCredit />
       </div>
     </div>
   );

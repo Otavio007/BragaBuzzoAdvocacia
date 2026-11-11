@@ -3040,3 +3040,16 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .entrance-page .choice-card { transition: none; }
 }
+
+.entrance-footer,
+.footer-bottom { flex-wrap: wrap; gap: 14px 24px; }
+.developer-credit {
+  font-size: 11px;
+  line-height: 1.6;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+}
+.developer-credit:hover,
+.developer-credit:focus-visible { text-decoration-color: currentColor; }

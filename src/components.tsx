@@ -348,6 +348,13 @@ export function Header({ area }: { area: Area }) {
     </header>
   );
 }
+export function DeveloperCredit() {
+  return (
+    <a className="developer-credit" href="https://linktr.ee/otavioribeiro07" target="_blank" rel="noopener noreferrer">
+      Desenvolvido por Otávio Ribeiro
+    </a>
+  );
+}
 export function Footer({ area }: { area?: Area }) {
   const { data } = useSite();
   const s = data!.settings;
@@ -387,6 +394,7 @@ export function Footer({ area }: { area?: Area }) {
             ? "Conteúdo demonstrativo · Imagens ilustrativas"
             : "Todos os direitos reservados."}
         </span>
+        <DeveloperCredit />
       </div>
     </footer>
   );
